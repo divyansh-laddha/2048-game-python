@@ -30,8 +30,12 @@ def load_game():
         dict with keys 'board', 'score', 'high_score' if file exists,
         otherwise returns None.
     """
+    if not os.path.exists(SAVE_FILE):
+        print("\nNo saved game found. Starting a new game.\n")
+        return None
+
     if os.path.getsize(SAVE_FILE) == 0:
-        print("\nStarting a New game.\n")
+        print("\nSave file is empty. Starting a new game.\n")
         return None
 
     try:
